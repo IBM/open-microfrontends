@@ -1,0 +1,26 @@
+{
+  "name": "open-microfrontends-client",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "main": "dist/mf-orchestrator.cjs.js",
+  "module": "dist/mf-orchestrator.esm.js",
+  "browser": "dist/mf-orchestrator.umd.js",
+  "scripts": {
+    "build": "rollup -c && rollup -c rollup-module-shim.config.js",
+    "dev": "rollup -c -w",
+    "test": "gauge run specs",
+    "pretest": "yarn run build"
+  },
+  "devDependencies": {
+    "gauge-ts": "0.1.0",
+    "mockttp": "^1.0.3",
+    "rollup": "^2.35.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "taiko": "^1.0.26",
+    "ts-node": "^9.1.1",
+    "tslib": "^2.0.3",
+    "typescript": "^4.1.3"
+  }
+}

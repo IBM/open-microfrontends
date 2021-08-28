@@ -1,0 +1,17 @@
+{
+  "scope": "mf-test",
+  "routes": [
+    "/test/**"
+  ],
+  "apps": {
+    "foobar": "/some/internal/path/to/my-mf-foobar.html",
+    "greeter": "/some/internal/path/to/my-mf-greeter.html"
+  },
+  "services": {
+    "some-service": "/test/some-service-1.0.0.js"
+  },
+  "runtimes": {
+    "some-runtime:1": "/test/some-runtime/v1",
+    "some-runtime:2": "/test/some-runtime/v2"
+  }
+}

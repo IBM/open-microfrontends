@@ -1,0 +1,33 @@
+{
+  "name": "open-microfrontends-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "node dist/index.js",
+    "start:dev": "MF_APP_MOCK=http://localhost:3000 MF_CONFIG_JS_BUNDLE_PATH=/Users/bartels/projects/fom-master-thesis/src/client/dist/mf-orchestrator.umd.js MF_CONFIG_JS_MODULE_SHIM_PATH=/Users/bartels/projects/fom-master-thesis/src/client/dist/es-module-shims.js ts-node src/index.ts",
+    "start:mock-mf": "ts-node test/mocks/mf-test/index.ts",
+    "build": "tsc",
+    "test": "yarn jest"
+  },
+  "dependencies": {
+    "@marblejs/core": "^3.4.8",
+    "@marblejs/middleware-body": "^3.4.8",
+    "@marblejs/middleware-logger": "^3.4.8",
+    "fp-ts": "^2.9.1",
+    "io-ts": "^2.2.13",
+    "micromatch": "^4.0.2",
+    "opossum": "^5.1.1",
+    "rxjs": "^6.6.3",
+    "undici": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.19",
+    "@types/micromatch": "^4.0.1",
+    "@types/opossum": "^4.1.1",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}

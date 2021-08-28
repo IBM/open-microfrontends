@@ -1,0 +1,55 @@
+name: Map Route via IBM Cloud Foundry
+
+description: Map a route for an application on Cloud Foundry on IBM Cloud
+
+branding:
+  icon: upload-cloud
+  color: blue
+
+inputs:
+  IBM_CLOUD_API_KEY:
+    description: IBM Cloud API key
+    required: true
+  IBM_CLOUD_CF_REGION:
+    description: IBM Cloud Foundry Region
+    required: true
+  IBM_CLOUD_CF_ORG:
+    description: IBM Cloud Foundry organization name
+    required: true
+  IBM_CLOUD_CF_SPACE:
+    description: IBM Cloud Foundry space name
+    required: true
+  WORKING_DIRECTORY:
+    description: Working Directory for the cf push command
+    required: true
+  HOST_MAPPING:
+    description: Working Directory for the cf push command
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install IBM Cloud CLI
+      run: curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+      shell: bash
+    - name: Install Cloud Foundry CLI
+      run: ibmcloud cf install --force
+      shell: bash
+    - name: Authenticate with IBM Cloud CLI
+      run: ibmcloud login --apikey "${{ inputs.IBM_CLOUD_API_KEY }}" -r "${{ inputs.IBM_CLOUD_CF_REGION }}"
+      shell: bash
+    - name: Target a Cloud Foundry org and space
+      run: ibmcloud target -o "${{ inputs.IBM_CLOUD_CF_ORG }}" -s "${{ inputs.IBM_CLOUD_CF_SPACE }}"
+      shell: bash
+    - name: debug message
+      run: pwd
+      working-directory: ${{ inputs.WORKING_DIRECTORY }}
+      shell: bash
+    - name: debug message 2
+      run: ls -la
+      working-directory: ${{ inputs.WORKING_DIRECTORY }}
+      shell: bash
+    - name: Define Route
+      working-directory: ${{ inputs.WORKING_DIRECTORY }}
+      run: ibmcloud cf map-route ${{ inputs.HOST_MAPPING }} apps.internal --hostname ${{ inputs.HOST_MAPPING }}
+      shell: bash
