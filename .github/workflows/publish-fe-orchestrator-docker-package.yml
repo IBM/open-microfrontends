@@ -28,7 +28,7 @@ jobs:
         run: docker build . --file Dockerfile --tag ghcr.io/alexanderbartels/fe-orchestrator:latest
 
       - name: Log into registry
-        run: echo "${{ secrets.PERSONAL_GH_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
+        run: echo "${{ secrets.PERSONAL_GH_TOKEN }}" | docker login ghcr.io -u alexanderbartels --password-stdin
 
       - name: Build and push
         run: docker push ghcr.io/alexanderbartels/fe-orchestrator:latest
