@@ -25,10 +25,10 @@ jobs:
         run: ls -la
 
       - name: Build image
-        run: docker build . --file Dockerfile --tag ghcr.io/alexanderbartels/fe-orchestrator:latest
+        run: docker build . --file Dockerfile --tag ghcr.io/alexanderbartels/open-microfrontends:latest
 
       - name: Log into registry
         run: echo "${{ secrets.PERSONAL_GH_TOKEN }}" | docker login ghcr.io -u alexanderbartels --password-stdin
 
       - name: Build and push
-        run: docker push ghcr.io/alexanderbartels/fe-orchestrator:latest
+        run: docker push ghcr.io/alexanderbartels/open-microfrontends:latest
